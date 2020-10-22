@@ -1,0 +1,29 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint-react",
+        "tslint-config-prettier"
+    ],
+    "rules": {
+        "ordered-imports": [
+            true,
+            {
+                "import-sources-order": "lowercase-last",
+                "named-imports-order": "lowercase-first"
+            }
+        ],
+        "jsx-boolean-value": false,
+        "quotemark": [
+            true,
+            "double",
+            "jsx-double"
+        ],
+        "semicolon": [
+            true,
+            "always"
+        ]
+    },
+    "rulesDirectory": [
+        "tslint-plugin-prettier"
+    ]
+}

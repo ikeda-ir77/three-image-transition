@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  body{
+    margin: 0;
+    overflow: hidden;
+    background: #222;
+  }
+  .wrapper{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  canvas{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .controls{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  .btn{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+  }
+  .btn.prevbtn{
+    left: 0;
+    cursor: w-resize;    
+  }
+  .btn.nextbtn{
+    right: 0;
+    cursor: e-resize;    
+  }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="./js/bundle.js"></script>
+</body>
+</html>
