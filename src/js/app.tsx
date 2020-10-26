@@ -123,6 +123,10 @@ class Canvas3d {
         ticker: {
           type: "f",
           value: 0
+        },
+        direction: {
+          type: "f",
+          value: 1
         }        
       }
     });
@@ -146,14 +150,14 @@ class Canvas3d {
   }
 
   prev(current: number, to: number){
-    this.animate(current, to);
+    this.animate(current, to, -1);
   }
 
   next(current: number, to: number){
-    this.animate(current, to);
+    this.animate(current, to, 1);
   }
 
-  animate(current:number, to: number){
+  animate(current:number, to: number, direction: number){
     console.log(current, to);
 
     material.uniforms.map.value.image = loadedImages[current];
@@ -166,8 +170,9 @@ class Canvas3d {
       worksTicker += 1;
       // material.uniforms.ticker.value = ( 1 - Math.cos(ticker)) / 2;
       material.uniforms.ticker.value = easeInOutCubic(worksTicker, 0, 1, 300);
+      material.uniforms.direction.value = direction;
       this.render();
-      if(material.uniforms.ticker.value > 1){
+      if(Math.abs(material.uniforms.ticker.value) > 1){
         window.clearInterval(interval);
         galleryAnimateFlag = false;
       }
@@ -289,9 +294,9 @@ export class App extends React.Component<IProps, IState> {
     
     return (
       <div className="wrapper">
-        <div className="btn prevbtn" onClick={this.handleWorksPrev}></div>
+        <div className="btn prevbtn" onClick={this.handleWorksPrev} />
         <canvas id="canvas" width="640" height="480" ref={ (elm: HTMLCanvasElement) => { canvas = elm; } } />
-        <div className="btn nextbtn" onClick={this.handleWorksNext}></div>
+        <div className="btn nextbtn" onClick={this.handleWorksNext} />
       </div>
     );
   }
